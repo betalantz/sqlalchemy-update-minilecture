@@ -9,13 +9,6 @@ import random
 
 Base = declarative_base()
 
-# Use @validates decorator with custom function (option to validate before transaction committed)
-@validates('release_year')
-def validate_release_year_range(self, key, year):
-    if year < 1998 or year > 2018:
-        raise ValueError('Release year must be between 1998 and 2018')
-    return year
-
 # Define a Videogame model class
 class Videogame(Base):
     __tablename__ = 'videogames'
@@ -23,10 +16,10 @@ class Videogame(Base):
     Index('index_name', 'title')
 
     id = Column(Integer(), primary_key=True)
-    title = Column(String(), nullable=False)
+    title = Column(String(), nullable=False) # adds database constraint so that this column can never contain null values
     studio = Column(String())
     genre = Column(String())
-    # use CheckConstraint class to add the custom constraint to this column
+    # use CheckConstraint class to add a custom constraint to this column
     release_year = Column(Integer(), CheckConstraint('release_year >= 1998 AND release_year <= 2018'))
     release_date = Column(DateTime())
 
