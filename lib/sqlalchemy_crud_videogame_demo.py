@@ -58,4 +58,25 @@ if __name__ == '__main__':
     for game in videogames:
         print(game)
 
+    videogame = session.query(Videogame).filter_by(id=1).first()
+    videogame.title = "A New Title"
+    session.commit()
+
+    videogame = session.query(Videogame).filter_by(id=1).first()
+    print(f"Updated game: {videogame}")
+
+    # Update the second videogame title using the update() method with error and handling
+    update_query = update(Videogame).where(Videogame.id == 2).values(title="Another New Title", release_year=2019)
+    try:
+        session.execute(update_query)
+        session.commit()
+    except Exception as e:
+        print(f"Error: {e}")
+        session.rollback()
+
+    # requery the same game to verify the update
+    videogame = session.query(Videogame).filter_by(id=2).first()
+    print(f"Updated game: {videogame}")
+
+
    
