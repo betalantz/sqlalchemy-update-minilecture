@@ -26,7 +26,7 @@
 
 ### III. Ensuring Data Integrity (2 min)
 
-- Discussion of the importance of data integrity when performing update and delete actions
+- Discussion of the importance of data integrity when performing update actions
 - Explanation of how to ensure data integrity using SQLAlchemy
 - Demonstration of ensuring data integrity in a sample update action
 
@@ -45,4 +45,8 @@
 - Importance of understanding update actions in a database
 - Further resources for learning more about SQLAlchemy and database operations in Python.
 
+# Further Resources
+[update()](https://docs.sqlalchemy.org/en/20/core/dml.html#sqlalchemy.sql.expression.update)
+[CheckConstraint class](https://docs.sqlalchemy.org/en/20/core/constraints.html#sqlalchemy.schema.CheckConstraint)
+[Managing db transactions with commit()](https://docs.sqlalchemy.org/en/20/orm/session_transaction.html#commit-as-you-go)
 
